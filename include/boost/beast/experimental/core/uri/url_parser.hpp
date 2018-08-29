@@ -1,5 +1,6 @@
 //
 // Copyright (c) 2018 jackarain (jack dot wgm at gmail dot com)
+// Copyright (c) 2018 oneiric (oneiric at i2pmail dot org)
 //
 // Distributed under the Boost Software License, Version 1.0. (See accompanying
 // file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
@@ -11,6 +12,8 @@
 #define BOOST_BEAST_CORE_URI_URL_PARSER_HPP
 
 #include <boost/beast/core/string.hpp>
+#include <boost/beast/experimental/core/uri/error.hpp>
+#include <boost/beast/experimental/core/uri/input.hpp>
 
 namespace boost {
 namespace beast {
@@ -36,7 +39,7 @@ struct url_parts {
     @param url URL to parse into component parts
     @return Parsed URL parts
 */
-url_parts parse_url(string_view url);
+url_parts parse_url(string_view url, error_code& ec);
 
 } // namespace uri
 } // namespace beast

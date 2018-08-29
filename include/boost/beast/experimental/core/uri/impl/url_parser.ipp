@@ -14,7 +14,7 @@ namespace boost {
 namespace beast {
 namespace uri {
 
-url_parts parse_url(string_view url) {
+url_parts parse_url(string_view url, error_code &ec) {
   enum {
     scheme_start,
     scheme,
@@ -261,8 +261,7 @@ url_parts parse_url(string_view url) {
         parts.fragment = string_view(part_start, b - part_start);
         return parts;
       }
-      if (detail::is_hsegment(c) || detail::is_sub_delims(c) ||
-          c == '/' || c == '?')
+      if (detail::is_hsegment(c) || detail::is_qchar(c))
         continue;
       return {};
     }
@@ -270,6 +269,8 @@ url_parts parse_url(string_view url) {
 
   return {};
 }
+
+
 
 } // namespace uri
 } // namespace beast
