@@ -13,6 +13,7 @@ local SOURCES =
     icy_stream.cpp
     ssl_stream.cpp
     stream.cpp
+    uri_parser.cpp
     ;
 
 local RUN_TESTS ;
